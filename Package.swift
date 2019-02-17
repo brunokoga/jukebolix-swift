@@ -5,12 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "jukebolix",
-    products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "jukebolix",
-            targets: ["jukebolix"]),
-    ],
     dependencies: [
         .package(url: "https://github.com/pvieito/PythonKit.git", .branch("master")),
         // Dependencies declare other packages that this package depends on.

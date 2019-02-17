@@ -66,8 +66,8 @@
       "OBJ_15" = {
          isa = "PBXGroup";
          children = (
-            "jukebolix::jukebolixTests::Product",
-            "jukebolix::jukebolix::Product"
+            "jukebolix::jukebolix::Product",
+            "jukebolix::jukebolixTests::Product"
          );
          name = "Products";
          path = "";
@@ -99,7 +99,6 @@
       "OBJ_21" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
-            ENABLE_TESTABILITY = "YES";
             FRAMEWORK_SEARCH_PATHS = (
                "$(inherited)",
                "$(PLATFORM_DIR)/Developer/Library/Frameworks"
@@ -111,7 +110,8 @@
             IPHONEOS_DEPLOYMENT_TARGET = "8.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
             );
             MACOSX_DEPLOYMENT_TARGET = "10.10";
             OTHER_CFLAGS = (
@@ -123,13 +123,11 @@
             OTHER_SWIFT_FLAGS = (
                "$(inherited)"
             );
-            PRODUCT_BUNDLE_IDENTIFIER = "jukebolix";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
             SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
                "$(inherited)"
             );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "jukebolix";
             TVOS_DEPLOYMENT_TARGET = "9.0";
@@ -140,7 +138,6 @@
       "OBJ_22" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
-            ENABLE_TESTABILITY = "YES";
             FRAMEWORK_SEARCH_PATHS = (
                "$(inherited)",
                "$(PLATFORM_DIR)/Developer/Library/Frameworks"
@@ -152,7 +149,8 @@
             IPHONEOS_DEPLOYMENT_TARGET = "8.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+               "@executable_path"
             );
             MACOSX_DEPLOYMENT_TARGET = "10.10";
             OTHER_CFLAGS = (
@@ -164,13 +162,11 @@
             OTHER_SWIFT_FLAGS = (
                "$(inherited)"
             );
-            PRODUCT_BUNDLE_IDENTIFIER = "jukebolix";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
             SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
                "$(inherited)"
             );
+            SWIFT_FORCE_DYNAMIC_LINK_STDLIB = "YES";
+            SWIFT_FORCE_STATIC_LINK_STDLIB = "NO";
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "jukebolix";
             TVOS_DEPLOYMENT_TARGET = "9.0";
@@ -454,14 +450,9 @@
       "OBJ_44" = {
          isa = "PBXFrameworksBuildPhase";
          files = (
-            "OBJ_45"
          );
       };
       "OBJ_45" = {
-         isa = "PBXBuildFile";
-         fileRef = "jukebolix::jukebolix::Product";
-      };
-      "OBJ_46" = {
          isa = "PBXTargetDependency";
          target = "jukebolix::jukebolix";
       };
@@ -504,7 +495,7 @@
       };
       "OBJ_9" = {
          isa = "PBXFileReference";
-         path = "jukebolix.swift";
+         path = "main.swift";
          sourceTree = "<group>";
       };
       "jukebolix::SwiftPMPackageDescription" = {
@@ -531,11 +522,11 @@
          name = "jukebolix";
          productName = "jukebolix";
          productReference = "jukebolix::jukebolix::Product";
-         productType = "com.apple.product-type.framework";
+         productType = "com.apple.product-type.tool";
       };
       "jukebolix::jukebolix::Product" = {
          isa = "PBXFileReference";
-         path = "jukebolix.framework";
+         path = "jukebolix";
          sourceTree = "BUILT_PRODUCTS_DIR";
       };
       "jukebolix::jukebolixPackageTests::ProductTarget" = {
@@ -557,7 +548,7 @@
             "OBJ_44"
          );
          dependencies = (
-            "OBJ_46"
+            "OBJ_45"
          );
          name = "jukebolixTests";
          productName = "jukebolixTests";
