@@ -31,7 +31,7 @@ class TestPlayer: Player {
     private func play(_ audioFile: AudioFile) {
         let directory = "/Users/brunokoga/Desktop/"
         let command = "afplay"
-        let args = ["\(directory)\(audioFile.filename)", "&"]
+        let args = ["\(directory)\(audioFile.filename)"]
         let process = Process()
         currentProccess = process
         DispatchQueue.global().async {
