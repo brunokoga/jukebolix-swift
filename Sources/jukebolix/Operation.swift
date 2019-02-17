@@ -31,13 +31,21 @@ public struct AudioFile {
 public enum Action {
     case play(audioFile: AudioFile)
     case playPause
+    case stop
     case volumeUp
     case volumeDown
     
     public init(id: CardId) {
-        if id == "p" {
+        switch id {
+        case "p":
             self = .playPause
-        } else {
+        case "s":
+            self = .stop
+        case "vup":
+            self = .volumeUp
+        case "vdown":
+            self = .volumeDown
+        default:
             let audioFile = AudioFile(id: id)
             self = .play(audioFile: audioFile)
         }
@@ -46,6 +54,8 @@ public enum Action {
     public var debugDescription: String {
         let description: String
         switch self {
+        case .stop:
+            description = "stop!"
         case .playPause:
             description = "play/pause"
         case .play(let audioFile):
