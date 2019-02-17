@@ -12,7 +12,9 @@ protocol Player {
 }
 
 class TestPlayer: Player {
-    private var lastPlayedProccessId: String?
+//    private var lastPlayedProccessId: String?
+    private var currentProccess: Process?
+    
     func execute(_ operation: Operation) {
         switch operation.action {
         case .stop:
@@ -27,12 +29,19 @@ class TestPlayer: Player {
     }
     
     private func play(_ audioFile: AudioFile) {
-        print("Playing...")
+        let directory = "/Users/brunokoga/Desktop/"
+        let command = "afplay"
+        let args = ["\(directory)\(audioFile.filename)", "&"]
+        let process = Process()
+        currentProccess = process
+        DispatchQueue.global().async {
+            let result = process.shell(command: "\(command) \(args.joined(separator: " "))")
+            print(result)
+        }
     }
     
     private func killLastPlayedProcessId() {
-        guard let lastPlayedProccessId = lastPlayedProccessId else { return }
-            print(lastPlayedProccessId)
+        currentProccess?.terminate()
     }
 }
 
@@ -45,5 +54,25 @@ struct Song {
         self.id = id
         filename = ""
         title = ""
+    }
+}
+
+
+
+extension Process {
+    public func shell(command: String) -> String {
+        launchPath = "/bin/bash"
+        arguments = ["-c", command]
+        
+        let outputPipe = Pipe()
+        standardOutput = outputPipe
+        launch()
+        
+        let data = outputPipe.fileHandleForReading.readDataToEndOfFile()
+        guard let outputData = String(data: data, encoding: String.Encoding.utf8) else { return "" }
+        
+        return outputData.reduce("") { (result, value) in
+            return result + String(value)
+        }
     }
 }

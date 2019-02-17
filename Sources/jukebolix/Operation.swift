@@ -26,6 +26,12 @@ public struct Operation {
 
 public struct AudioFile {
     let id: SongId
+    let filename: String
+    
+    public init(id: SongId) {
+        self.id = id
+        filename = id + ".m4a"
+    }
 }
 
 public enum Action {
