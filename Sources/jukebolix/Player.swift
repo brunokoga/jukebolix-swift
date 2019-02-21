@@ -12,14 +12,14 @@ protocol Player {
 }
 
 class TestPlayer: Player {
-    private var currentProccess: Process?
+    private var currentProcess: Process?
     
     func execute(_ operation: Operation) {
         switch operation.action {
         case .stop:
-            killLastPlayedProcessId()
+            killCurrentProcess()
         case .play(let audioFile):
-            killLastPlayedProcessId()
+            killCurrentProcess()
             play(audioFile)
         default:
             break
@@ -32,14 +32,14 @@ class TestPlayer: Player {
         let command = "afplay"
         let args = ["\(directory)\(audioFile.filename)"]
         let process = Process()
-        currentProccess = process
+        currentProcess = process
         DispatchQueue.global().async {
             let result = process.shell(command: "\(command) \(args.joined(separator: " "))")
             print(result)
         }
     }
     
-    private func killLastPlayedProcessId() {
-        currentProccess?.terminate()
+    private func killCurrentProcess() {
+        currentProcess?.terminate()
     }
 }
