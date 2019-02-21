@@ -27,7 +27,7 @@ class TestPlayer: Player {
         print(operation.debugDescription)
     }
     
-    private func play(_ audioFile: Audio) {
+    private func play(_ audioFile: AudioFile) {
         let directory = "/Users/brunokoga/Desktop/"
         let command = "afplay"
         let args = ["\(directory)\(audioFile.filename)"]

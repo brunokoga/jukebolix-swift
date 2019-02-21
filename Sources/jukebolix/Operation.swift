@@ -16,7 +16,7 @@ public struct Operation: CustomDebugStringConvertible {
     
     public init(id: CardId) {
         self.id = id
-        self.action = Action(id: id)
+        self.action = TestActionFactory.createAction(from: id)
     }
     
     public var debugDescription: String {
@@ -24,28 +24,37 @@ public struct Operation: CustomDebugStringConvertible {
     }
 }
 
+protocol ActionFactory {
+    static func createAction(from cardId: CardId) -> Action
+}
+
+struct TestActionFactory {
+    static func createAction(from cardId: CardId) -> Action {
+        let action: Action
+        switch cardId {
+        case "p":
+            action = .playPause
+        case "s":
+            action = .stop
+        case "vup":
+            action = .volumeUp
+        case "vdown":
+            action = .volumeDown
+        default:
+            let audioFile = Audio(id: cardId)
+            action = .play(audioFile: audioFile)
+        }
+        return action
+    }
+}
+
+
 public enum Action: CustomDebugStringConvertible  {
-    case play(audioFile: Audio)
+    case play(audioFile: AudioFile)
     case playPause
     case stop
     case volumeUp
     case volumeDown
-    
-    public init(id: CardId) {
-        switch id {
-        case "p":
-            self = .playPause
-        case "s":
-            self = .stop
-        case "vup":
-            self = .volumeUp
-        case "vdown":
-            self = .volumeDown
-        default:
-            let audioFile = Audio(id: id)
-            self = .play(audioFile: audioFile)
-        }
-    }
     
     public var debugDescription: String {
         let description: String
