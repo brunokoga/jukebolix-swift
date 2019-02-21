@@ -23,6 +23,9 @@
 /* Begin PBXBuildFile section */
 		B24B182F2219E26C00862D42 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24B182E2219E26C00862D42 /* Operation.swift */; };
 		B24B18312219E2EF00862D42 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24B18302219E2EF00862D42 /* Player.swift */; };
+		B2A8EDE4221F295300043339 /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8EDE3221F295300043339 /* AudioFile.swift */; };
+		B2A8EDE6221F29A600043339 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8EDE5221F29A600043339 /* Process.swift */; };
+		B2A8EDE8221F29CA00043339 /* PlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8EDE7221F29CA00043339 /* PlayerFactory.swift */; };
 		OBJ_24 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_31 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		B24B182E2219E26C00862D42 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		B24B18302219E2EF00862D42 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B2A8EDE3221F295300043339 /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
+		B2A8EDE5221F29A600043339 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		B2A8EDE7221F29CA00043339 /* PlayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFactory.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* jukebolixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jukebolixTests.swift; sourceTree = "<group>"; };
 		OBJ_18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -110,7 +116,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -120,7 +126,6 @@
 				OBJ_15 /* Products */,
 				OBJ_18 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -137,6 +142,9 @@
 				OBJ_9 /* main.swift */,
 				B24B182E2219E26C00862D42 /* Operation.swift */,
 				B24B18302219E2EF00862D42 /* Player.swift */,
+				B2A8EDE7221F29CA00043339 /* PlayerFactory.swift */,
+				B2A8EDE3221F295300043339 /* AudioFile.swift */,
+				B2A8EDE5221F29A600043339 /* Process.swift */,
 			);
 			name = jukebolix;
 			path = Sources/jukebolix;
@@ -208,7 +216,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_15 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -226,7 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B2A8EDE4221F295300043339 /* AudioFile.swift in Sources */,
+				B2A8EDE6221F29A600043339 /* Process.swift in Sources */,
 				OBJ_24 /* main.swift in Sources */,
+				B2A8EDE8221F29CA00043339 /* PlayerFactory.swift in Sources */,
 				B24B18312219E2EF00862D42 /* Player.swift in Sources */,
 				B24B182F2219E26C00862D42 /* Operation.swift in Sources */,
 			);

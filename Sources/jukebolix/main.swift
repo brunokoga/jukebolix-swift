@@ -1,4 +1,6 @@
-let player = TestPlayer()
+let playerFactory: PlayerFactory = TestPlayerFactory()
+let player: Player = playerFactory.createPlayer()
+
 while(true) {
     print("\n")
     print("Qual id da música? (s para parar)")
@@ -9,5 +11,3 @@ while(true) {
     let operation = Operation(id: line)
     player.execute(operation)
 }
-
-

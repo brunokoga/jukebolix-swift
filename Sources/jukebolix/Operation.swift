@@ -10,7 +10,7 @@ import Foundation
 public typealias CardId = String
 public typealias SongId = String
 
-public struct Operation {
+public struct Operation: CustomDebugStringConvertible {
     let action: Action
     let id: CardId
     
@@ -24,18 +24,8 @@ public struct Operation {
     }
 }
 
-public struct AudioFile {
-    let id: SongId
-    let filename: String
-    
-    public init(id: SongId) {
-        self.id = id
-        filename = id + ".m4a"
-    }
-}
-
-public enum Action {
-    case play(audioFile: AudioFile)
+public enum Action: CustomDebugStringConvertible  {
+    case play(audioFile: Audio)
     case playPause
     case stop
     case volumeUp
@@ -52,7 +42,7 @@ public enum Action {
         case "vdown":
             self = .volumeDown
         default:
-            let audioFile = AudioFile(id: id)
+            let audioFile = Audio(id: id)
             self = .play(audioFile: audioFile)
         }
     }
@@ -74,5 +64,3 @@ public enum Action {
         return description
     }
 }
-
-
