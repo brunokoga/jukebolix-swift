@@ -7,6 +7,34 @@
 
 import Foundation
 
+protocol Playlist {
+    var allSongs: [Song] { get }
+    func song(for id: SongId) -> Song?
+}
+
+struct PlistPlaylist: Playlist {
+    let allSongs: [Song]
+    func song(for id: SongId) -> Song? {
+        return nil
+    }
+    
+    //https://stackoverflow.com/a/48140217/912254
+    init(plistPath: String) {
+        guard let data = FileManager.default.contents(atPath: plistPath) else {
+            allSongs = []
+            return
+        }
+        let decoder = PropertyListDecoder()
+        guard let songs = try? decoder.decode([Song].self, from: data) else {
+            allSongs = []
+            return
+        }
+        allSongs = songs
+    }
+    
+    
+}
+
 protocol Player {
     func execute(_ operation: Operation)
 }

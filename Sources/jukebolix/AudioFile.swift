@@ -7,6 +7,9 @@
 
 import Foundation
 
+public protocol File {
+    var path: String { get }
+}
 public protocol AudioFile {
     var id: SongId { get }
     var filename: String { get }
@@ -24,7 +27,11 @@ public struct Audio: AudioFile {
     }
 }
 
-public struct Song: AudioFile {
+public struct Song: AudioFile, Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case id, filename, title
+    }
+    
     public let id: SongId
     public let filename: String
     public let title: String
