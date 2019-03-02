@@ -39,6 +39,37 @@ protocol Player {
     func execute(_ operation: Operation)
 }
 
+class JukebolixPlayer: Player {
+    private let playlist: Playlist
+    
+    init(playlist: Playlist) {
+        self.playlist = playlist
+    }
+    
+    func execute(_ operation: Operation) {
+        switch operation.action {
+        case .stop:
+            stop()
+            break
+        case .play(let audioFile):
+            stop()
+            play(audioFile)
+        default:
+            break
+        }
+        print(operation.debugDescription)
+    }
+    
+    private func stop() {
+        print("stop")
+    }
+    
+    private func play(_ audioFile: AudioFile) {
+        print(audioFile)
+    }
+    
+}
+
 class TestPlayer: Player {
     private var currentProcess: Process?
     

@@ -10,6 +10,7 @@ import Foundation
 public protocol File {
     var path: String { get }
 }
+
 public protocol AudioFile {
     var id: SongId { get }
     var filename: String { get }
